@@ -39,13 +39,13 @@ const Contact = () => {
     {
       name: "Twitter",
       icon: "🐦",
-      url: "https://twitter.com/ywow_ai",
+      url: "https://twitter.com/_chmod_x",
       color: "hover:text-cyan-400",
     },
     {
       name: "Discord",
       icon: "💬",
-      url: "https://discord.gg/ywow-ai",
+      url: "https://discord.gg/ywow.ai",
       color: "hover:text-purple-400",
     },
   ];
