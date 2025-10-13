@@ -1,0 +1,366 @@
+/* Glitch Effect */
+.glitch-text {
+  position: relative;
+  color: #fff;
+  font-weight: bold;
+  animation: glitch-skew 1s infinite linear alternate-reverse;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-text::before {
+  left: 2px;
+  text-shadow: -2px 0 #06b6d4;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+  left: -2px;
+  text-shadow: -2px 0 #8b5cf6;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% {
+    clip: rect(31px, 9999px, 94px, 0);
+    transform: skew(0.3deg);
+  }
+  5% {
+    clip: rect(70px, 9999px, 71px, 0);
+    transform: skew(0.5deg);
+  }
+  10% {
+    clip: rect(61px, 9999px, 28px, 0);
+    transform: skew(0.2deg);
+  }
+  15% {
+    clip: rect(43px, 9999px, 17px, 0);
+    transform: skew(0.8deg);
+  }
+  20% {
+    clip: rect(28px, 9999px, 99px, 0);
+    transform: skew(0.4deg);
+  }
+  25% {
+    clip: rect(35px, 9999px, 48px, 0);
+    transform: skew(0.6deg);
+  }
+  30% {
+    clip: rect(90px, 9999px, 65px, 0);
+    transform: skew(0.3deg);
+  }
+  35% {
+    clip: rect(12px, 9999px, 85px, 0);
+    transform: skew(0.9deg);
+  }
+  40% {
+    clip: rect(77px, 9999px, 34px, 0);
+    transform: skew(0.2deg);
+  }
+  45% {
+    clip: rect(52px, 9999px, 60px, 0);
+    transform: skew(0.7deg);
+  }
+  50% {
+    clip: rect(18px, 9999px, 76px, 0);
+    transform: skew(0.4deg);
+  }
+  55% {
+    clip: rect(63px, 9999px, 29px, 0);
+    transform: skew(0.5deg);
+  }
+  60% {
+    clip: rect(41px, 9999px, 82px, 0);
+    transform: skew(0.8deg);
+  }
+  65% {
+    clip: rect(25px, 9999px, 55px, 0);
+    transform: skew(0.3deg);
+  }
+  70% {
+    clip: rect(69px, 9999px, 21px, 0);
+    transform: skew(0.6deg);
+  }
+  75% {
+    clip: rect(36px, 9999px, 88px, 0);
+    transform: skew(0.9deg);
+  }
+  80% {
+    clip: rect(54px, 9999px, 44px, 0);
+    transform: skew(0.2deg);
+  }
+  85% {
+    clip: rect(15px, 9999px, 73px, 0);
+    transform: skew(0.7deg);
+  }
+  90% {
+    clip: rect(81px, 9999px, 37px, 0);
+    transform: skew(0.4deg);
+  }
+  95% {
+    clip: rect(48px, 9999px, 66px, 0);
+    transform: skew(0.5deg);
+  }
+  100% {
+    clip: rect(22px, 9999px, 91px, 0);
+    transform: skew(0.3deg);
+  }
+}
+
+@keyframes glitch-anim2 {
+  0% {
+    clip: rect(65px, 9999px, 100px, 0);
+    transform: skew(0.5deg);
+  }
+  5% {
+    clip: rect(20px, 9999px, 50px, 0);
+    transform: skew(0.3deg);
+  }
+  10% {
+    clip: rect(85px, 9999px, 30px, 0);
+    transform: skew(0.8deg);
+  }
+  15% {
+    clip: rect(45px, 9999px, 75px, 0);
+    transform: skew(0.2deg);
+  }
+  20% {
+    clip: rect(10px, 9999px, 95px, 0);
+    transform: skew(0.6deg);
+  }
+  25% {
+    clip: rect(70px, 9999px, 40px, 0);
+    transform: skew(0.4deg);
+  }
+  30% {
+    clip: rect(35px, 9999px, 80px, 0);
+    transform: skew(0.9deg);
+  }
+  35% {
+    clip: rect(55px, 9999px, 25px, 0);
+    transform: skew(0.3deg);
+  }
+  40% {
+    clip: rect(15px, 9999px, 70px, 0);
+    transform: skew(0.7deg);
+  }
+  45% {
+    clip: rect(80px, 9999px, 45px, 0);
+    transform: skew(0.5deg);
+  }
+  50% {
+    clip: rect(40px, 9999px, 90px, 0);
+    transform: skew(0.2deg);
+  }
+  55% {
+    clip: rect(25px, 9999px, 60px, 0);
+    transform: skew(0.8deg);
+  }
+  60% {
+    clip: rect(75px, 9999px, 35px, 0);
+    transform: skew(0.4deg);
+  }
+  65% {
+    clip: rect(50px, 9999px, 85px, 0);
+    transform: skew(0.6deg);
+  }
+  70% {
+    clip: rect(30px, 9999px, 55px, 0);
+    transform: skew(0.9deg);
+  }
+  75% {
+    clip: rect(90px, 9999px, 20px, 0);
+    transform: skew(0.3deg);
+  }
+  80% {
+    clip: rect(60px, 9999px, 75px, 0);
+    transform: skew(0.7deg);
+  }
+  85% {
+    clip: rect(18px, 9999px, 48px, 0);
+    transform: skew(0.5deg);
+  }
+  90% {
+    clip: rect(72px, 9999px, 38px, 0);
+    transform: skew(0.2deg);
+  }
+  95% {
+    clip: rect(42px, 9999px, 82px, 0);
+    transform: skew(0.8deg);
+  }
+  100% {
+    clip: rect(28px, 9999px, 68px, 0);
+    transform: skew(0.4deg);
+  }
+}
+
+@keyframes glitch-skew {
+  0% {
+    transform: skew(0deg);
+  }
+  10% {
+    transform: skew(1deg);
+  }
+  20% {
+    transform: skew(-1deg);
+  }
+  30% {
+    transform: skew(2deg);
+  }
+  40% {
+    transform: skew(-2deg);
+  }
+  50% {
+    transform: skew(1deg);
+  }
+  60% {
+    transform: skew(-1deg);
+  }
+  70% {
+    transform: skew(0deg);
+  }
+  80% {
+    transform: skew(1deg);
+  }
+  90% {
+    transform: skew(-1deg);
+  }
+  100% {
+    transform: skew(0deg);
+  }
+}
+
+/* Neon Button Effect */
+.neon-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.neon-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(6, 182, 212, 0.4),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.neon-button:hover::before {
+  left: 100%;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #06b6d4, #8b5cf6);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #8b5cf6, #06b6d4);
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Selection Color */
+::selection {
+  background-color: rgba(139, 92, 246, 0.3);
+  color: #06b6d4;
+}
+
+::-moz-selection {
+  background-color: rgba(139, 92, 246, 0.3);
+  color: #06b6d4;
+}
+
+/* Terminal Styling */
+.terminal-window {
+  animation: terminalSlideIn 0.3s ease-out;
+}
+
+@keyframes terminalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.terminal-content {
+  scrollbar-width: thin;
+  scrollbar-color: #10b981 #000;
+}
+
+.terminal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terminal-content::-webkit-scrollbar-track {
+  background: #000;
+}
+
+.terminal-content::-webkit-scrollbar-thumb {
+  background: #10b981;
+  border-radius: 4px;
+}
+
+.terminal-content::-webkit-scrollbar-thumb:hover {
+  background: #34d399;
+}
+
+/* Terminal Text Effects */
+.terminal-content {
+  text-shadow: 0 0 5px rgba(16, 185, 129, 0.5);
+}
+
+/* Keyboard Key Styling */
+kbd {
+  font-family: "Courier New", monospace;
+  font-weight: 600;
+}
