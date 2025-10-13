@@ -60,7 +60,7 @@ const SkillsVisualization = () => {
 
   type Skill = {
     name: string;
-    proficiency: string;
+    proficiency: "master" | "expert" | "advanced" | "proficient" | "learning";
     years: string;
   };
 
@@ -79,8 +79,8 @@ const SkillsVisualization = () => {
       skills: [
         { name: "Next.js", proficiency: "expert", years: "3+" },
         { name: "React", proficiency: "expert", years: "4+" },
-        { name: "Tailwind CSS", proficiency: "master", years: "3+" },
-        { name: "TypeScript", proficiency: "expert", years: "3+" },
+        { name: "Tailwind CSS", proficiency: "expert", years: "3+" },
+        { name: "TypeScript", proficiency: "expert", years: "4+" },
       ],
     },
     {
@@ -88,7 +88,7 @@ const SkillsVisualization = () => {
       icon: "⚙️",
       color: "from-purple-500 to-pink-500",
       skills: [
-        { name: "Elysia.js", proficiency: "expert", years: "2+" },
+        { name: "Elysia.js", proficiency: "master", years: "2+" },
         { name: "Phoenix/Elixir", proficiency: "advanced", years: "2+" },
         { name: "Prisma ORM", proficiency: "expert", years: "3+" },
         { name: "PostgreSQL", proficiency: "expert", years: "4+" },
@@ -99,7 +99,7 @@ const SkillsVisualization = () => {
       icon: "🚀",
       color: "from-orange-500 to-red-500",
       skills: [
-        { name: "nginx Configuration", proficiency: "master", years: "3+" },
+        { name: "nginx Configuration", proficiency: "advanced", years: "3+" },
         { name: "Load Balancing", proficiency: "expert", years: "3+" },
         { name: "Docker/Kubernetes", proficiency: "advanced", years: "2+" },
         { name: "CI/CD Pipelines", proficiency: "advanced", years: "2+" },
@@ -110,10 +110,10 @@ const SkillsVisualization = () => {
       icon: "📱",
       color: "from-green-500 to-emerald-500",
       skills: [
-        { name: "Jetpack Compose", proficiency: "expert", years: "2+" },
+        { name: "Jetpack Compose", proficiency: "advanced", years: "2+" },
         { name: "Android SDK", proficiency: "advanced", years: "3+" },
-        { name: "Kotlin", proficiency: "expert", years: "3+" },
-        { name: "Material Design", proficiency: "expert", years: "3+" },
+        { name: "Kotlin", proficiency: "advanced", years: "3+" },
+        { name: "Material Design", proficiency: "advanced", years: "3+" },
       ],
     },
     {
@@ -136,7 +136,7 @@ const SkillsVisualization = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 },
+      { threshold: 0.1 }
     );
 
     if (sectionRef.current) {
@@ -270,10 +270,10 @@ const SkillsVisualization = () => {
         {/* Overall Stats */}
         <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
           {[
-            { label: "Technologies Mastered", value: "20+", icon: "💻" },
-            { label: "Years of Experience", value: "3+", icon: "⏱️" },
-            { label: "Projects Completed", value: "50+", icon: "✅" },
-            { label: "Production Systems", value: "15+", icon: "⚡" },
+            { label: "Technologies Mastered", value: "10+", icon: "💻" },
+            { label: "Years of Experience", value: "2+", icon: "⏱️" },
+            { label: "Projects Completed", value: "10+", icon: "✅" },
+            { label: "Production Systems", value: "3+", icon: "⚡" },
           ].map((stat, index) => (
             <div
               key={stat.label}

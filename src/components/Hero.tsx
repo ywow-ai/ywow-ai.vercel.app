@@ -1,4 +1,58 @@
+import { useEffect, useState } from "react";
+
+type GitHub = {
+  login: string;
+  id: number;
+  node_id: string;
+  avatar_url: string;
+  gravatar_id: string;
+  url: string;
+  html_url: string;
+  followers_url: string;
+  following_url: string;
+  gists_url: string;
+  starred_url: string;
+  subscriptions_url: string;
+  organizations_url: string;
+  repos_url: string;
+  events_url: string;
+  received_events_url: string;
+  type: string;
+  user_view_type: string;
+  site_admin: boolean;
+  name: string;
+  company: null;
+  blog: string;
+  location: string;
+  email: null;
+  hireable: null;
+  bio: string;
+  twitter_username: null;
+  public_repos: number;
+  public_gists: number;
+  followers: number;
+  following: number;
+  created_at: Date;
+  updated_at: Date;
+};
+
 const Hero = () => {
+  const [github, setGithub] = useState<GitHub | null>(null);
+
+  useEffect(() => {
+    fetch("https://api.github.com/users/ywow-ai")
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error("error fetch");
+        }
+      })
+      .then((res) => {
+        setGithub(res);
+      });
+  }, []);
+
   return (
     <section
       id="home"
@@ -37,7 +91,10 @@ const Hero = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 rounded-full blur-xl opacity-75 group-hover:opacity-100 transition-opacity duration-300 animate-pulse"></div>
             <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden border-4 border-purple-500/50 shadow-2xl shadow-purple-500/50">
               <img
-                src="https://api.dicebear.com/7.x/avataaars/svg?seed=ywow-ai&backgroundColor=b6e3f4,c0aede,d1d4f9"
+                src={
+                  github?.avatar_url ??
+                  "https://api.dicebear.com/7.x/avataaars/svg?seed=ywow-ai&backgroundColor=b6e3f4,c0aede,d1d4f9"
+                }
                 alt="ywow-ai avatar"
                 className="w-full h-full object-cover"
               />
@@ -65,7 +122,7 @@ const Hero = () => {
 
         {/* Interests badges */}
         <div className="flex flex-wrap justify-center gap-3 mb-10">
-          {["🎮 Game", "🎌 Anime", "💻 Teknologi"].map((interest) => (
+          {["🎮 Game", "🎌 Anime", "💻 Technology"].map((interest) => (
             <span
               key={interest}
               className="px-4 py-2 bg-gray-800/70 backdrop-blur-sm border border-purple-500/40 rounded-full text-sm text-cyan-400 hover:border-cyan-400/60 hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 hover:scale-105"

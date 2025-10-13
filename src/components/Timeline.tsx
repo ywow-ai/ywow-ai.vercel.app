@@ -1,5 +1,14 @@
 const Timeline = () => {
-  const experiences = [
+  type Experience = {
+    id: number;
+    type: "experience" | "education";
+    title: string;
+    organization: string;
+    period: string;
+    description: string;
+  };
+
+  const experiences: Experience[] = [
     {
       id: 1,
       type: "experience",
