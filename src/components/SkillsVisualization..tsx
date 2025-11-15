@@ -136,7 +136,7 @@ const SkillsVisualization = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (sectionRef.current) {
@@ -295,7 +295,7 @@ const SkillsVisualization = () => {
         </div>
 
         {/* Terminal Hint */}
-        <div className="mt-12 text-center">
+        {/* <div className="mt-12 text-center">
           <div className="inline-block bg-gray-800/50 backdrop-blur-sm border border-cyan-500/30 rounded-lg px-6 py-3">
             <p className="text-cyan-400 text-sm font-mono">
               💡 Press{" "}
@@ -309,7 +309,7 @@ const SkillsVisualization = () => {
               to open terminal
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
