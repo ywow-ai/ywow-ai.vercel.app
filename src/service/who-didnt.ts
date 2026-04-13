@@ -3,7 +3,7 @@
 import type { IgUser } from "@/generated/prisma/client";
 import { prisma, xenv } from "@/lib/prisma";
 import lodash from "lodash";
-import axios from "axios";
+import axios, { isAxiosError } from "axios";
 
 export const execute = async () => {
   const startTime = Date.now();
@@ -76,7 +76,11 @@ export const execute = async () => {
             setTimeout(resolve, throttle * 1000);
           });
         } catch (error) {
-          console.log(`error attempt ${attempt.retryCount}`, error);
+          if (isAxiosError(error)) {
+            console.log(`error attempt ${attempt.retryCount}`, error.message);
+          } else {
+            console.log(`error attempt ${attempt.retryCount}`, error);
+          }
 
           const isEqual = lodash.isEqual(
             Object.fromEntries(url.searchParams),
@@ -145,7 +149,11 @@ export const execute = async () => {
             setTimeout(resolve, throttle * 1000);
           });
         } catch (error) {
-          console.log(`error attempt ${attempt.retryCount}`, error);
+          if (isAxiosError(error)) {
+            console.log(`error attempt ${attempt.retryCount}`, error.message);
+          } else {
+            console.log(`error attempt ${attempt.retryCount}`, error);
+          }
 
           const isEqual = lodash.isEqual(
             Object.fromEntries(url.searchParams),
@@ -281,7 +289,14 @@ export const execute = async () => {
               });
               done = true;
             } catch (error) {
-              console.log(`error attempt ${attempt.retryCount}`, error);
+              if (isAxiosError(error)) {
+                console.log(
+                  `error attempt ${attempt.retryCount}`,
+                  error.message,
+                );
+              } else {
+                console.log(`error attempt ${attempt.retryCount}`, error);
+              }
 
               const isEqual = lodash.isEqual(
                 Object.fromEntries(params),
