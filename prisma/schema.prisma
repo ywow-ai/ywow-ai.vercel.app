@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Environment {
+  id        String   @id() @default(uuid())
+  key       String   @unique
+  value     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model IgUser {
+  id                            String  @unique
+  username                      String  @unique
+  full_name                     String
+  strong_id__                   String
+  pk                            String
+  pk_id                         String
+  fbid_v2                       String
+  third_party_downloads_enabled BigInt
+  profile_pic_id                String
+  profile_pic_url               String
+  is_verified                   Boolean
+  is_private                    Boolean
+  has_anonymous_profile_picture Boolean
+  latest_reel_media             BigInt
+}
+
+model WhodidntException {
+  id        String  @unique
+  username  String  @unique
+  full_name String?
+
+  @@map("whodidnt_exception")
+}
