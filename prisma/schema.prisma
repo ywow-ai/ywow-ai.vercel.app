@@ -13,6 +13,8 @@ model Environment {
   value     String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@map("whodidnt_environment")
 }
 
 model IgUser {
@@ -30,6 +32,8 @@ model IgUser {
   is_private                    Boolean
   has_anonymous_profile_picture Boolean
   latest_reel_media             BigInt
+
+  @@map("whodidnt_ig_user")
 }
 
 model WhodidntException {
