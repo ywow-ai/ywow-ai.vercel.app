@@ -27,13 +27,13 @@ export const execute = async () => {
 
     const attempt = {
       maxRetry,
-      retryCount: 0,
+      retryCount: 1,
       canRetry() {
         this.retryCount++;
         return this.retryCount <= this.maxRetry;
       },
       reset() {
-        this.retryCount = 0;
+        this.retryCount = 1;
       },
     };
 
@@ -76,12 +76,6 @@ export const execute = async () => {
             setTimeout(resolve, throttle * 1000);
           });
         } catch (error) {
-          if (isAxiosError(error)) {
-            console.log(`error attempt ${attempt.retryCount}`, error.message);
-          } else {
-            console.log(`error attempt ${attempt.retryCount}`, error);
-          }
-
           const isEqual = lodash.isEqual(
             Object.fromEntries(url.searchParams),
             latestPayloads,
@@ -107,6 +101,12 @@ export const execute = async () => {
             await dc.post(`/${dcWebhookId}/${dcToken}`, body);
 
             return false;
+          }
+
+          if (isAxiosError(error)) {
+            console.log(`error attempt ${attempt.retryCount}`, error.message);
+          } else {
+            console.log(`error attempt ${attempt.retryCount}`);
           }
 
           latestPayloads = Object.fromEntries(url.searchParams);
@@ -149,12 +149,6 @@ export const execute = async () => {
             setTimeout(resolve, throttle * 1000);
           });
         } catch (error) {
-          if (isAxiosError(error)) {
-            console.log(`error attempt ${attempt.retryCount}`, error.message);
-          } else {
-            console.log(`error attempt ${attempt.retryCount}`, error);
-          }
-
           const isEqual = lodash.isEqual(
             Object.fromEntries(url.searchParams),
             latestPayloads,
@@ -180,6 +174,12 @@ export const execute = async () => {
             await dc.post(`/${dcWebhookId}/${dcToken}`, body);
 
             return false;
+          }
+
+          if (isAxiosError(error)) {
+            console.log(`error attempt ${attempt.retryCount}`, error.message);
+          } else {
+            console.log(`error attempt ${attempt.retryCount}`);
           }
 
           latestPayloads = Object.fromEntries(url.searchParams);
@@ -295,7 +295,7 @@ export const execute = async () => {
                   error.message,
                 );
               } else {
-                console.log(`error attempt ${attempt.retryCount}`, error);
+                console.log(`error attempt ${attempt.retryCount}`);
               }
 
               const isEqual = lodash.isEqual(

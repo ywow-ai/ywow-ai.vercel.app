@@ -217,6 +217,7 @@ const Hero = () => {
                 src={github?.avatar_url ?? "/image/avatar.svg"}
                 alt="ywow-ai avatar"
                 className="w-full h-full object-cover"
+                sizes="184px"
                 fill
               />
             </div>
