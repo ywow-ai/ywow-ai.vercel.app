@@ -1,0 +1,43 @@
+---
+import SectionTitle from './SectionTitle.astro';
+import { projects } from '../data/site';
+import { tw } from '../lib/tw';
+import Icon from './Icon.astro';
+---
+
+<section id="portfolio" class="relative px-4 py-20 sm:px-6 lg:px-8">
+  <div class="relative z-10 mx-auto max-w-7xl">
+    <SectionTitle title="Portfolio" subtitle="Some of my recent works and projects" />
+
+    <div class="grid gap-8 md:grid-cols-2">
+      {projects.map((project, i) => (
+        <article class={`${tw.card} group overflow-hidden p-0`} data-reveal data-reveal-delay={`${i * 120}ms`}>
+          <div class="relative h-48 overflow-hidden">
+            <img
+              src={project.image}
+              alt={project.title}
+              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class={`${tw.display} ${tw.gradientText} mb-3 text-2xl font-bold`}>{project.title}</h3>
+            <p class={`mb-4 leading-relaxed ${tw.muted}`}>{project.description}</p>
+            <div class="mb-4 flex flex-wrap gap-2">
+              {project.tech.map((t) => (
+                <span class={`${tw.badge} inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium`}>
+                  <Icon name={t} alt={t} size={14} />
+                  {t}
+                </span>
+              ))}
+            </div>
+            <div class="flex gap-3">
+              <a href="#" class={`${tw.btnPrimary} flex-1 rounded-xl py-2 text-sm`}>Live Demo</a>
+              <a href="#" class={`${tw.btnOutline} flex-1 rounded-xl py-2 text-sm`}>Source Code</a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

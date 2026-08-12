@@ -1,0 +1,87 @@
+---
+import { interests, siteConfig } from '../data/site';
+import { tw } from '../lib/tw';
+import Icon from './Icon.astro';
+---
+
+<section id="home" class="relative flex min-h-screen items-center justify-center overflow-x-hidden pt-16 pb-12">
+  <div class="relative z-10 px-4 text-center sm:px-6 lg:px-8" data-hero-content>
+    <div class="mb-8 flex justify-center" data-reveal>
+      <div class={`${tw.avatarRing} group`}>
+        <div class="h-36 w-36 overflow-hidden rounded-full bg-white [html[data-theme=dark]_&]:bg-[#18132a] sm:h-44 sm:w-44">
+          <img
+            id="hero-avatar"
+            src="/image/avatar.svg"
+            alt="ywow-ai avatar"
+            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+            width="176"
+            height="176"
+          />
+        </div>
+      </div>
+    </div>
+
+    <h1
+      class={`${tw.display} ${tw.gradientText} mb-4 text-5xl font-extrabold sm:text-6xl md:text-7xl`}
+      data-reveal
+      data-reveal-delay="40ms"
+    >
+      {siteConfig.name}
+    </h1>
+
+    <p class={`mx-auto mb-8 max-w-2xl text-lg leading-relaxed sm:text-xl ${tw.muted}`} data-reveal data-reveal-delay="120ms">
+      &quot;{siteConfig.tagline}&quot;
+    </p>
+
+    <div class="mb-10 flex flex-wrap justify-center gap-3" data-reveal data-reveal-delay="240ms">
+      {interests.map((item) => (
+        <span class={`${tw.badge} inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-transform hover:scale-105`}>
+          <Icon name={item.icon} alt={item.label} size={18} />
+          {item.label}
+        </span>
+      ))}
+    </div>
+
+    <div class="flex flex-col items-center justify-center gap-4 sm:flex-row" data-reveal data-reveal-delay="320ms">
+      <a href="#portfolio" class={tw.btnPrimary}>View Portfolio</a>
+      <a href="#contact" class={tw.btnOutline}>Contact Me</a>
+    </div>
+
+    <div class={`${tw.badge} mt-8 inline-flex items-center gap-2 px-5 py-2 text-sm font-medium`} data-reveal data-reveal-delay="400ms">
+      <Icon name="role" alt="" size={18} />
+      <span class={tw.muted}>{siteConfig.role}</span>
+    </div>
+  </div>
+
+  <div class="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-bounce">
+    <svg class="h-6 w-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+    </svg>
+  </div>
+</section>
+
+<script>
+  fetch('https://api.github.com/users/ywow-ai')
+    .then((r) => (r.ok ? r.json() : null))
+    .then((data) => {
+      const img = document.getElementById('hero-avatar') as HTMLImageElement | null;
+      if (data?.avatar_url && img) img.src = data.avatar_url;
+    })
+    .catch(() => {});
+
+  (function () {
+    const content = document.querySelector('[data-hero-content]') as HTMLElement | null;
+    if (!content || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          content.style.transform = `translateY(${window.scrollY * -0.1}px)`;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  })();
+</script>

@@ -1,0 +1,54 @@
+---
+import SectionTitle from './SectionTitle.astro';
+import { techStack } from '../data/site';
+import { tw } from '../lib/tw';
+import Icon from './Icon.astro';
+---
+
+<section id="about" class="relative px-4 py-20 sm:px-6 lg:px-8">
+  <div class="relative z-10 mx-auto max-w-6xl">
+    <SectionTitle title="About Me" />
+
+    <div class="grid items-center gap-12 md:grid-cols-2">
+      <div data-reveal-left>
+        <div class={`${tw.card} p-8`}>
+          <h3 class={`${tw.display} mb-4 text-2xl font-bold text-purple-400`}>Fullstack Developer</h3>
+          <p class={`mb-4 leading-relaxed ${tw.muted}`}>
+            Seorang karakter fiksi dari sebuah game yang entah kenapa bisa coding. Passionate dalam mengembangkan aplikasi web modern dengan teknologi terkini.
+          </p>
+          <p class={`leading-relaxed ${tw.muted}`}>
+            Menguasai berbagai teknologi fullstack dari frontend hingga backend, dengan spesialisasi di JavaScript/TypeScript ecosystem dan functional programming dengan Elixir.
+          </p>
+          <div class="mt-6 flex gap-4">
+            <div class={`flex-1 rounded-2xl border border-purple-400/30 p-4 text-center ${tw.surfaceSoft}`}>
+              <div class={`text-3xl font-bold ${tw.gradientText}`}>2+</div>
+              <div class={`mt-1 text-sm ${tw.muted}`}>Years Experience</div>
+            </div>
+            <div class={`flex-1 rounded-2xl border border-purple-400/30 p-4 text-center ${tw.surfaceSoft}`}>
+              <div class={`text-3xl font-bold ${tw.gradientText}`}>10+</div>
+              <div class={`mt-1 text-sm ${tw.muted}`}>Projects Done</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-reveal-right>
+        <h3 class={`${tw.display} mb-6 text-center text-2xl font-bold md:text-left`}>
+          <span class={tw.gradientText}>Tech Stack</span>
+        </h3>
+        <div class="grid grid-cols-2 gap-4">
+          {techStack.map((tech, i) => (
+            <div class={`${tw.cardSm} group cursor-pointer p-5`} data-reveal data-reveal-delay={`${i * 80}ms`}>
+              <div class="flex flex-col items-center text-center">
+                <div class="mb-2 flex h-10 items-center justify-center transition-transform group-hover:scale-110">
+                  <Icon name={tech.icon} alt={tech.name} size={36} />
+                </div>
+                <div class={`bg-linear-to-r ${tech.gradient} bg-clip-text text-sm font-bold text-transparent`}>{tech.name}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

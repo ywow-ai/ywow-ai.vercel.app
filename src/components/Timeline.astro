@@ -1,0 +1,67 @@
+---
+import SectionTitle from "./SectionTitle.astro";
+import { timeline } from "../data/site";
+import { tw } from "../lib/tw";
+import Icon from "./Icon.astro";
+---
+
+<section id="experience" class="relative px-4 py-20 sm:px-6 lg:px-8">
+  <div class="relative z-10 mx-auto max-w-5xl">
+    <SectionTitle title="Experience & Education" />
+
+    <div class="relative">
+      <div
+        class="absolute left-1/2 hidden h-full w-1 -translate-x-1/2 rounded-full bg-linear-to-b from-purple-400 via-indigo-500 to-pink-500 md:block"
+      >
+      </div>
+
+      <div class="space-y-12">
+        {
+          timeline.map((item, index) => (
+            <div
+              class={`relative flex items-center ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
+              data-reveal
+              data-reveal-delay={`${index * 100}ms`}
+            >
+              <div
+                class={`w-full md:w-5/12 ${index % 2 === 0 ? "md:pr-8 md:text-right" : "md:pl-8 md:text-left"}`}
+              >
+                <div class={`${tw.card} p-6`}>
+                  <span
+                    class={`mb-3 inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold ${
+                      item.type === "experience"
+                        ? "border-purple-400/40 bg-purple-400/15 text-purple-400"
+                        : "border-pink-400/40 bg-pink-400/15 text-pink-400"
+                    }`}
+                  >
+                    <Icon
+                      name={item.type === "experience" ? "experience" : "education"}
+                      alt=""
+                      size={14}
+                    />
+                    {item.type === "experience" ? "Experience" : "Education"}
+                  </span>
+                  <div class={`mb-2 text-sm font-semibold text-indigo-400`}>
+                    {item.period}
+                  </div>
+                  <h3 class={`${tw.display} mb-2 text-xl font-bold ${tw.text}`}>
+                    {item.title}
+                  </h3>
+                  <div class="mb-3 font-medium text-purple-400">
+                    {item.organization}
+                  </div>
+                  <p class={`text-sm leading-relaxed ${tw.muted}`}>
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+              <div class="absolute left-1/2 hidden h-6 w-6 -translate-x-1/2 rounded-full bg-linear-to-r from-purple-400 via-indigo-500 to-pink-500 shadow-md shadow-purple-400/40 md:block">
+                <div class="m-1 h-4 w-4 rounded-full bg-white [html[data-theme=dark]_&]:bg-[#18132a]" />
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

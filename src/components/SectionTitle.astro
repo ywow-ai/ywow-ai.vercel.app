@@ -1,0 +1,16 @@
+---
+import { tw } from '../lib/tw';
+
+interface Props {
+  title: string;
+  subtitle?: string;
+}
+
+const { title, subtitle } = Astro.props;
+---
+
+<div class="mb-16 text-center" data-reveal>
+  <h2 class={`${tw.display} ${tw.gradientText} mb-4 text-4xl font-extrabold sm:text-5xl`}>{title}</h2>
+  <div class={tw.divider}></div>
+  {subtitle && <p class={`mt-4 ${tw.muted}`}>{subtitle}</p>}
+</div>

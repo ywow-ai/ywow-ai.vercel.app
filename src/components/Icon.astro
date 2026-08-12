@@ -1,0 +1,24 @@
+---
+import { getIconUrl, iconFile } from "../lib/geticon";
+
+interface Props {
+  /** Icon lookup key or SVG filename under public/icons/ */
+  name: string;
+  alt: string;
+  size?: number;
+  class?: string;
+}
+
+const { name, alt, size = 24, class: className = "" } = Astro.props;
+const src = name.endsWith(".svg") ? getIconUrl(name) : getIconUrl(iconFile(name));
+---
+
+<img
+  src={src}
+  alt={alt}
+  width={size}
+  height={size}
+  class={`inline-block shrink-0 object-contain ${className}`}
+  loading="lazy"
+  decoding="async"
+/>

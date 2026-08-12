@@ -1,0 +1,70 @@
+---
+import SectionTitle from './SectionTitle.astro';
+import { proficiencyLevels, skillCategories, stats } from '../data/site';
+import { tw } from '../lib/tw';
+import Icon from './Icon.astro';
+---
+
+<section id="skills" class="relative overflow-x-hidden px-4 py-20 sm:px-6 lg:px-8">
+  <div class="relative z-10 mx-auto max-w-7xl">
+    <SectionTitle title="Technical Arsenal" subtitle="Data flows like water - clear, purposeful, elegant" />
+
+    <div class="mb-12 flex flex-wrap justify-center gap-3" data-reveal>
+      {Object.entries(proficiencyLevels).map(([_, level]) => (
+        <div class={`flex items-center gap-2 rounded-full border px-4 py-2 ${level.classes}`}>
+          <Icon name={level.icon} alt={level.label} size={18} />
+          <span class="text-sm font-semibold">{level.label}</span>
+        </div>
+      ))}
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-2">
+      {skillCategories.map((cat, ci) => (
+        <div class={`${tw.card} p-6`} data-reveal data-reveal-delay={`${ci * 100}ms`}>
+          <div class="mb-6 flex items-center gap-3">
+            <Icon name={cat.icon} alt={cat.category} size={32} />
+            <h3 class={`bg-linear-to-r ${cat.gradient} bg-clip-text text-xl font-bold text-transparent`}>{cat.category}</h3>
+          </div>
+          <div class="space-y-3">
+            {cat.skills.map((skill, si) => {
+              const prof = proficiencyLevels[skill.proficiency];
+              return (
+                <div
+                  class={`group flex items-center justify-between rounded-xl p-3 transition-colors ${tw.surfaceSoft}`}
+                  data-reveal
+                  data-reveal-delay={`${ci * 100 + si * 60}ms`}
+                >
+                  <div class="flex items-center gap-3">
+                    <span class="transition-transform group-hover:scale-110">
+                      <Icon name={skill.name} alt={skill.name} size={22} />
+                    </span>
+                    <div>
+                      <div class={`text-sm font-medium transition-colors group-hover:opacity-80 ${tw.text}`}>{skill.name}</div>
+                      <div class={`text-xs ${tw.muted}`}>{skill.years} years</div>
+                    </div>
+                  </div>
+                  <div class={`flex items-center gap-1.5 rounded-full border px-3 py-1 ${prof.classes}`}>
+                    <Icon name={prof.icon} alt={prof.label} size={14} />
+                    <span class="text-xs font-semibold">{prof.label}</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-12 grid grid-cols-2 gap-6 md:grid-cols-4">
+      {stats.map((stat, i) => (
+        <div class={`${tw.cardSm} p-6 text-center`} data-reveal data-reveal-delay={`${800 + i * 100}ms`}>
+          <div class="mb-2 flex justify-center">
+            <Icon name={stat.icon} alt={stat.label} size={32} />
+          </div>
+          <div class={`${tw.gradientText} mb-1 text-3xl font-bold`}>{stat.value}</div>
+          <div class={`text-sm ${tw.muted}`}>{stat.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,46 +1,44 @@
-# Astro Starter Kit: Basics
+# ywow-ai Portfolio (Astro)
 
-```sh
-bun create astro@latest -- --template basics
+Portfolio rebuild dari [ywow-ai.vercel.app](https://ywow-ai.vercel.app/) — Astro 7 + Tailwind CSS v4.
+
+## Fitur
+
+- **Parallax geometris** — X, kotak, segitiga, lingkaran (purple · indigo · pink)
+- **Light / dark mode** — toggle via `data-theme` on `<html>`
+- **Scroll reveal** — fade/slide dengan utility Tailwind
+- **Glass cards** — hover lift + shadow
+- **Nav scroll spy** — highlight section aktif
+
+## Stack
+
+- Astro 7 + `@tailwindcss/vite` (Tailwind v4)
+- Styling: **utility Tailwind only** — `global.css` hanya `@import "tailwindcss"`
+- Shared class strings: `src/lib/tw.ts`
+
+## Menjalankan
+
+```bash
+bun install
+bun dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Build
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```bash
+bun build
+bun preview
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Struktur
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```
+src/
+├── components/     # Hero, About, Skills, Portfolio, dll.
+├── data/site.ts    # Semua konten & data
+├── lib/tw.ts       # Tailwind utility strings
+├── layouts/        # Layout + SEO
+├── pages/          # index.astro
+└── styles/         # global.css (Tailwind import only)
+public/image/       # Avatar + assets
+```

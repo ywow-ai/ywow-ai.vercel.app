@@ -1,0 +1,65 @@
+---
+import SectionTitle from './SectionTitle.astro';
+import { socialLinks } from '../data/site';
+import { tw } from '../lib/tw';
+import Icon from './Icon.astro';
+---
+
+<section id="contact" class="relative px-4 py-20 sm:px-6 lg:px-8">
+  <div class="relative z-10 mx-auto max-w-5xl">
+    <SectionTitle title="Get In Touch" subtitle="Let's create something amazing together" />
+
+    <div class="grid gap-12 md:grid-cols-2">
+      <div class={`${tw.card} p-8`} data-reveal-left>
+        <h3 class={`${tw.display} mb-6 text-2xl font-bold text-indigo-400`}>Send a Message</h3>
+        <form class="space-y-5" id="contact-form">
+          <div>
+            <label for="name" class={`mb-2 block text-sm font-medium ${tw.muted}`}>Name</label>
+            <input type="text" id="name" name="name" required placeholder="Your name" class={tw.input} />
+          </div>
+          <div>
+            <label for="email" class={`mb-2 block text-sm font-medium ${tw.muted}`}>Email</label>
+            <input type="email" id="email" name="email" required placeholder="your.email@example.com" class={tw.input} />
+          </div>
+          <div>
+            <label for="message" class={`mb-2 block text-sm font-medium ${tw.muted}`}>Message</label>
+            <textarea id="message" name="message" required rows={5} placeholder="Your message here..." class={`${tw.input} resize-none`}></textarea>
+          </div>
+          <button type="submit" class={`${tw.btnPrimary} w-full`}>Send Message</button>
+        </form>
+      </div>
+
+      <div class="space-y-8" data-reveal-right>
+        <div class={`${tw.card} p-8`}>
+          <h3 class={`${tw.display} mb-6 text-2xl font-bold text-pink-400`}>Connect With Me</h3>
+          <div class="space-y-3">
+            {socialLinks.map((social) => (
+              <a href={social.url} target="_blank" rel="noopener noreferrer" class={`${tw.cardSm} flex items-center gap-4 p-4 transition-transform hover:scale-[1.02] ${social.hover}`}>
+                <Icon name={social.icon} alt={social.name} size={28} />
+                <span class={`font-medium ${tw.text}`}>{social.name}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div class={`${tw.card} p-8`}>
+          <h3 class={`${tw.display} mb-3 flex items-center gap-2 text-xl font-bold ${tw.gradientText}`}>
+            <Icon name="websocket" alt="" size={22} />
+            Quick Response
+          </h3>
+          <p class={`text-sm leading-relaxed ${tw.muted}`}>
+            I typically respond within 24 hours. For urgent matters, feel free to reach out via Discord for faster communication.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.getElementById('contact-form')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Thank you for your message! (This is a demo form)');
+    (e.target as HTMLFormElement).reset();
+  });
+</script>
