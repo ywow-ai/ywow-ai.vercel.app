@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { siteConfig } from "../data/site";
+import { tw } from "../lib/tw";
 
 interface Props {
   title?: string;
@@ -44,7 +45,7 @@ const { title = siteConfig.title, description = siteConfig.description } =
     </script>
   </head>
   <body
-    class="min-h-screen overflow-x-hidden font-[M_PLUS_Rounded_1c,sans-serif] text-purple-700 antialiased [html[data-theme=dark]_&]:text-purple-200"
+    class={`min-h-screen overflow-x-hidden font-[M_PLUS_Rounded_1c,sans-serif] text-purple-700 antialiased [html[data-theme=dark]_&]:text-purple-200 ${tw.pageBg}`}
   >
     <slot />
 
